@@ -163,13 +163,6 @@ extension Reducer {
   }
 }
 
-extension WithViewStore {
-  @available(*, unavailable, renamed: "debug(_:)")
-  public func debug(prefix: String) -> Self {
-    self.debug(prefix)
-  }
-}
-
 // NB: Deprecated after 0.1.3:
 
 extension Effect {

@@ -17,20 +17,10 @@ import SwiftUI
 ///     inside a `WithViewStore` it will behave erratically. To work around you should use the
 ///     initializer that takes a binding (see
 ///     [here](https://gist.github.com/mbrandonw/dee2ceac2c316a1619cfdf1dc7945f66)).
-public struct WithViewStore<State, Action, Content>: View where Content: View {
+public struct WithViewStore<State, Action, Content> {
   private let content: (ViewStore<State, Action>) -> Content
   private var prefix: String?
   @ObservedObject private var viewStore: ViewStore<State, Action>
-
-  /// Prints debug information to the console whenever the view is computed.
-  ///
-  /// - Parameter prefix: A string with which to prefix all debug messages.
-  /// - Returns: A structure that prints debug messages for all computations.
-  public func debug(_ prefix: String = "") -> Self {
-    var view = self
-    view.prefix = prefix
-    return view
-  }
 }
 
 extension WithViewStore: View where Content: View {
